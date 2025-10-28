@@ -105,7 +105,7 @@ void RS485DeviceCollection::rxThread() {
     } catch (const std::exception& e) {
       rs485_serial_.set_last_error(e.what());
       rs485_serial_.rx_busy_.store(false, std::memory_order_relaxed);
-      std::this_thread::sleep_for(std::chrono::milliseconds(1));
+      //std::this_thread::sleep_for(std::chrono::milliseconds(1));
     }
   }
 }

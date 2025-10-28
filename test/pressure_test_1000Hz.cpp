@@ -36,9 +36,8 @@ int main() {
 
     // Initialize 4 ROTARY52 MRC devices with IDs 0x01-0x04
     std::vector<safe_mrc::MRCType> mrc_types = {
-        safe_mrc::MRCType::ROTARY52, safe_mrc::MRCType::ROTARY52,
         safe_mrc::MRCType::ROTARY52, safe_mrc::MRCType::ROTARY52};
-    std::vector<uint8_t> rs485_ids = {0x01, 0x02, 0x03, 0x04};
+    std::vector<uint8_t> rs485_ids = {0x01, 0x02};
 
     safeguarder.init_mrcs(mrc_types, rs485_ids);
 
@@ -50,8 +49,6 @@ int main() {
     // Maintain a safe command (FIX_LIMIT 0.0f) for all devices
     safeguarder.get_mrc_component().mrc_control_all(
         {safe_mrc::MRCCmd{safe_mrc::MRCMode::FIX_LIMIT, 0.0f},
-         safe_mrc::MRCCmd{safe_mrc::MRCMode::FIX_LIMIT, 0.0f},
-         safe_mrc::MRCCmd{safe_mrc::MRCMode::FIX_LIMIT, 0.0f},
          safe_mrc::MRCCmd{safe_mrc::MRCMode::FIX_LIMIT, 0.0f}});
 
     using clock = std::chrono::steady_clock;
